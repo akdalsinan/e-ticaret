@@ -1,0 +1,25 @@
+.carouseDiv{
+    background-color: aqua;
+    color: black;
+}
+
+.contentStyle{
+    /* height: 160px; */
+    color: #fff;
+   
+    
+    background-color: aquamarine;
+    
+
+  }
+  .slick-active{
+    background-color: aqua;
+  }
+
+  .Footer{
+
+    background-color: black;
+    color: antiquewhite;
+    text-align: center;
+    height: 40px;
+  }
