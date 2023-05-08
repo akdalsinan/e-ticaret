@@ -32,11 +32,12 @@ const { Meta } = Card;
 
 function Home() {
   const [sepett, setSepet] = useState([]); //sepet adında use state dizisi oluşturuldu bu diziye ... operatörü ile ekleme yapacağız.
-  
-  const sepeteEkle = (eklenenurun) => {
-    setSepet([...sepett, eklenenurun]);
-  }
-  
+
+  const sepeteEkle = (index) => {
+    const newDeger = deger.filter((e, i) => i === index);
+    console.log("newDeger", newDeger);
+  };
+
   const [deger, setDeger] = useState([]);
 
   useEffect(() => {
@@ -46,17 +47,19 @@ function Home() {
     }).then((res) => setDeger(res.data.products));
   }, []);
 
-  {sepett.map((item) => (
-    <div key={item.id}>
-      <h3>{item.name}</h3>
-      <p>{item.price}</p>
-    </div>
-  ))}
+  {
+    sepett.map((item) => (
+      <div key={item.id}>
+        <h3>{item.name}</h3>
+        <p>{item.price}</p>
+      </div>
+    ));
+  }
+  console.log({ sepett });
 
   return (
     <div>
       <MyCarouse />
-      
 
       <div className="listDiv">
         <List
@@ -78,59 +81,49 @@ function Home() {
             pageSize: 6,
           }}
           dataSource={deger}
-          renderItem={(item) => (
+          renderItem={(item, index) => (
             <List.Item>
-              <Link to={`/products/${item.id}`}>
-                <Card
-                  hoverable
-                  style={{
-                    width: 300,
-                  }}
-                  cover={<img alt="example" src={item.images} />}
-                >
+              <Card
+                hoverable
+                style={{
+                  width: 300,
+                }}
+                cover={<img alt="example" src={item.images} />}
+              >
+                <Link to={`/products/${item.id}`}>
                   <Meta title={item.title} description={item.description} />
                   <Meta
                     style={{ marginBottom: "10px" }}
                     title={` ${item.price}.00 tl`}
                     description={<Rate disabled defaultValue={item.rating} />}
                   />
+                </Link>
+                <Tooltip title="SEPETE EKLE">
+                  <Button
+                    onClick={()=>sepeteEkle(index)}
+                    style={{ width: "73px", marginRight: "10px" }}
+                    icon={<ShoppingCartOutlined />}
+                  />
+                </Tooltip>
 
-                 
-                    
-                    <Tooltip title="SEPETE EKLE">
-                      <Button onClick={()=>sepeteEkle()}
-                        style={{ width: "73px", marginRight: "10px" }}
-                        icon={<ShoppingCartOutlined />}
-                      />
-                    </Tooltip>
-            
+                <Tooltip title="FAVORİ EKLE">
+                  <Button
+                    style={{ width: "73px", marginRight: "10px" }}
+                    icon={<HeartOutlined />}
+                  />
+                </Tooltip>
 
-                  <Tooltip title="FAVORİ EKLE">
-                    <Button
-                      style={{ width: "73px", marginRight: "10px" }}
-                      icon={<HeartOutlined />}
-                    />
-                  </Tooltip>
-
-                  <Tooltip title="PAYLAŞ">
-                    <Button
-                      style={{ width: "73px", marginRight: "10px" }}
-                      icon={<ShareAltOutlined />}
-                    />
-                  </Tooltip>
-                </Card>
-              </Link>
+                <Tooltip title="PAYLAŞ">
+                  <Button
+                    style={{ width: "73px", marginRight: "10px" }}
+                    icon={<ShareAltOutlined />}
+                  />
+                </Tooltip>
+              </Card>
             </List.Item>
           )}
         />
-      
-
-
-
       </div>
-
-      
-
 
       {/* {deger.map((result,index)=>
     {
@@ -174,8 +167,6 @@ function Home() {
           </Card>       
         )
     })} */}
-
-
     </div>
   );
 }
