@@ -1,25 +1,46 @@
-.carouseDiv{
-    background-color: aqua;
-    color: black;
+.carouseDiv {
+  background-color: aqua;
+  color: black;
 }
 
-.contentStyle{
-    /* height: 160px; */
-    color: #fff;
-   
-    
-    background-color: aquamarine;
-    
+.contentStyle {
+  /* height: 160px; */
+  color: #fff;
 
-  }
-  .slick-active{
-    background-color: aqua;
-  }
+  background-color: aquamarine;
+}
+.slick-active {
+  background-color: aqua;
+}
 
-  .Footer{
+.Footer {
+  background-color: black;
+  color: antiquewhite;
+  text-align: center;
+  height: 40px;
+}
 
-    background-color: black;
-    color: antiquewhite;
-    text-align: center;
-    height: 40px;
-  }
+.listDiv {
+  margin: 40px;
+  border: solid 5px black;
+}
+
+.carouseDiv{
+  margin: 40px 200px ;
+}
+
+.ant-menu-light{
+  background-color:  rgb(170, 167, 167) ;
+}
+.AntMenu{
+
+  border: solid 5px rgb(170, 167, 167) ;
+  border-radius: 10px;
+  height: 60px;
+  width: 500px;
+}
+
+.NavLink {
+  color: red;
+  background-color: red;
+}

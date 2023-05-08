@@ -1,5 +1,14 @@
-import React, { useEffect,useState } from "react";
-import { Carousel, Card, Icon, Avatar, Tooltip, Button } from "antd";
+import React, { useEffect, useState } from "react";
+import {
+  Carousel,
+  Card,
+  Icon,
+  Avatar,
+  Tooltip,
+  Button,
+  List,
+  Rate,
+} from "antd";
 
 import {
   ShoppingCartOutlined,
@@ -7,9 +16,9 @@ import {
   ShareAltOutlined,
 } from "@ant-design/icons";
 
-import bilg from "../image/bilg.jpg";
-import shop from "../image/shop.png";
 import axios from "axios";
+import MyCarouse from "../components/MyCarouse";
+import { NavLink, Router, Link } from "react-router-dom";
 
 // const contentStyle = {
 //   height: '160px',
@@ -22,62 +31,111 @@ import axios from "axios";
 const { Meta } = Card;
 
 function Home() {
-
-   const [deger, setDeger] = useState([])
+  const [sepett, setSepet] = useState([]); //sepet adında use state dizisi oluşturuldu bu diziye ... operatörü ile ekleme yapacağız.
+  
+  const sepeteEkle = (eklenenurun) => {
+    setSepet([...sepett, eklenenurun]);
+  }
+  
+  const [deger, setDeger] = useState([]);
 
   useEffect(() => {
     axios({
       method: "get",
       url: "https://dummyjson.com/products",
-    }).then((res) => setDeger( res.data.products));
+    }).then((res) => setDeger(res.data.products));
   }, []);
 
-  console.log("deger",deger)
-  
+  {sepett.map((item) => (
+    <div key={item.id}>
+      <h3>{item.name}</h3>
+      <p>{item.price}</p>
+    </div>
+  ))}
 
   return (
     <div>
-      <Carousel autoplay>
-        <div>
-          <img
-            style={{ textAlign: "center", width: "100%", height: "500px" }}
-            src={shop}
-            alt=""
-          />
-        </div>
+      <MyCarouse />
+      
 
-        <div style={{}} className="contentStyle">
-          <img
-            style={{ textAlign: "center", width: "100%", height: "500px" }}
-            src={bilg}
-            alt=""
-          />
-        </div>
+      <div className="listDiv">
+        <List
+          grid={{
+            gutter: 16,
+            xs: 1,
+            sm: 2,
+            md: 4,
+            lg: 4,
+            xl: 6,
+            xxl: 3,
+          }}
+          itemLayout="vertical"
+          size="large"
+          pagination={{
+            onChange: (page) => {
+              console.log(page);
+            },
+            pageSize: 6,
+          }}
+          dataSource={deger}
+          renderItem={(item) => (
+            <List.Item>
+              <Link to={`/products/${item.id}`}>
+                <Card
+                  hoverable
+                  style={{
+                    width: 300,
+                  }}
+                  cover={<img alt="example" src={item.images} />}
+                >
+                  <Meta title={item.title} description={item.description} />
+                  <Meta
+                    style={{ marginBottom: "10px" }}
+                    title={` ${item.price}.00 tl`}
+                    description={<Rate disabled defaultValue={item.rating} />}
+                  />
 
-        <div className="contentStyle">
-          <img
-            style={{ textAlign: "center", width: "100%", height: "500px" }}
-            src={bilg}
-            alt=""
-          />
-        </div>
+                 
+                    
+                    <Tooltip title="SEPETE EKLE">
+                      <Button onClick={()=>sepeteEkle()}
+                        style={{ width: "73px", marginRight: "10px" }}
+                        icon={<ShoppingCartOutlined />}
+                      />
+                    </Tooltip>
+            
 
-        <div className="contentStyle">
-          <img
-            style={{ textAlign: "center", width: "100%", height: "500px" }}
-            src={bilg}
-            alt=""
-          />
-        </div>
-      </Carousel>
+                  <Tooltip title="FAVORİ EKLE">
+                    <Button
+                      style={{ width: "73px", marginRight: "10px" }}
+                      icon={<HeartOutlined />}
+                    />
+                  </Tooltip>
 
-    
+                  <Tooltip title="PAYLAŞ">
+                    <Button
+                      style={{ width: "73px", marginRight: "10px" }}
+                      icon={<ShareAltOutlined />}
+                    />
+                  </Tooltip>
+                </Card>
+              </Link>
+            </List.Item>
+          )}
+        />
+      
 
-    {deger.map((result,index)=>
+
+
+      </div>
+
+      
+
+
+      {/* {deger.map((result,index)=>
     {
         return(
-          <div style={{ margin: "50px" }} className="cardDiv">
-          <Card
+         <Card
             hoverable
             style={{
               width: 300,
@@ -93,6 +151,7 @@ function Home() {
             <Meta style={{ marginBottom: "10px" }} title={ `${result.price}.00 tl`}  />
   
             <Tooltip title="SEPETE EKLE">
+              
               <Button
                 style={{ width: "73px", marginRight: "10px" }}
                 icon={<ShoppingCartOutlined />}
@@ -112,18 +171,9 @@ function Home() {
                 icon={<ShareAltOutlined />}
               />
             </Tooltip>
-          </Card>
-        </div>
-          
+          </Card>       
         )
-
-
-
-    })}
-
-
-    
-
+    })} */}
 
 
     </div>
