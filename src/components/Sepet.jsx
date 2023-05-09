@@ -1,9 +1,24 @@
-import React from 'react'
+import React, { useState,useEffect } from "react";
+import { Badge, Avatar } from "antd";
+import { ShoppingCartOutlined } from "@ant-design/icons";
+  var sayi=-2;
+function Sepet({ count }) {
+  //console.log(count);
 
-function Sepet() {
+
+
+  
+//   if(count==undefined){
+//     console.log("undefined değer geliyor")
+//     sayi++
+
+//   }
   return (
-    <div>Sepet</div>
-  )
+    
+    <div >
+     sepettt
+    </div>
+  );
 }
 
-export default Sepet
+export default Sepet;

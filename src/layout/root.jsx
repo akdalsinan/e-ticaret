@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 /* Global Component */
 //import Header from "./MyHeader";
@@ -7,19 +7,20 @@ import Section from "./Section";
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 
+
 /* Layout Style CSS */
 import "./Layout.css";
 
 function Root() {
+
   return (
     /* Global Page */
-    <div>
       <>
-        <Header />
-        <Section />
+     
+        <Section   />
         <Footer />
       </>
-    </div>
+
   );
 }
 

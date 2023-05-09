@@ -1,16 +1,5 @@
-.carouseDiv {
-  background-color: aqua;
-  color: black;
-}
-
-.contentStyle {
-  /* height: 160px; */
-  color: #fff;
-
-  background-color: aquamarine;
-}
-.slick-active {
-  background-color: aqua;
+.section {
+  margin-top: 80px;
 }
 
 .Footer {
@@ -25,22 +14,48 @@
   border: solid 5px black;
 }
 
-.carouseDiv{
-  margin: 40px 200px ;
+.carouseDiv {
+  margin: 40px 200px;
 }
 
-.ant-menu-light{
-  background-color:  rgb(170, 167, 167) ;
+.ant-menu-light {
+  background-color: black;
 }
-.AntMenu{
-
-  border: solid 5px rgb(170, 167, 167) ;
+.AntMenu {
+  border: solid 5px rgb(0, 0, 0);
   border-radius: 10px;
   height: 60px;
-  width: 500px;
+  width: 800px;
 }
 
 .NavLink {
-  color: red;
-  background-color: red;
+  color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
+}
+
+.AntMenu .siderMenu {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.AntMenu .siderMenu:hover {
+  transition: all 1s;
+  background-color: #e41f1f;
+}
+
+.headerDiv {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #000000;
+  color: #fff;
+
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.card {
+  border: outset 2px rgb(170, 167, 167);
 }

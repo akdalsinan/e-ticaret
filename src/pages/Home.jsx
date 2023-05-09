@@ -19,24 +19,22 @@ import {
 import axios from "axios";
 import MyCarouse from "../components/MyCarouse";
 import { NavLink, Router, Link } from "react-router-dom";
+import Sepet from "../components/Sepet";
 
-// const contentStyle = {
-//   height: '160px',
-//   color: '#fff',
-//   lineHeight: '160px',
-//   textAlign: 'center',
-//   background: '#364d79',
-// };
+
 
 const { Meta } = Card;
 
-function Home() {
+function Home({ change }) {
   const [sepett, setSepet] = useState([]); //sepet adında use state dizisi oluşturuldu bu diziye ... operatörü ile ekleme yapacağız.
 
   const sepeteEkle = (index) => {
-    const newDeger = deger.filter((e, i) => i === index);
-    console.log("newDeger", newDeger);
+    const newDeger = deger.filter((e, i) => i === index); 
+    setSepet([...sepett, newDeger]);
+
   };
+
+  change(sepett.length ); 
 
   const [deger, setDeger] = useState([]);
 
@@ -47,19 +45,12 @@ function Home() {
     }).then((res) => setDeger(res.data.products));
   }, []);
 
-  {
-    sepett.map((item) => (
-      <div key={item.id}>
-        <h3>{item.name}</h3>
-        <p>{item.price}</p>
-      </div>
-    ));
-  }
-  console.log({ sepett });
 
   return (
-    <div>
+    <div>  
+ 
       <MyCarouse />
+   
 
       <div className="listDiv">
         <List
@@ -84,6 +75,7 @@ function Home() {
           renderItem={(item, index) => (
             <List.Item>
               <Card
+                className="card"
                 hoverable
                 style={{
                   width: 300,
@@ -100,22 +92,22 @@ function Home() {
                 </Link>
                 <Tooltip title="SEPETE EKLE">
                   <Button
-                    onClick={()=>sepeteEkle(index)}
-                    style={{ width: "73px", marginRight: "10px" }}
+                    onClick={() => sepeteEkle(index)}
+                    style={{ width: "73px", marginRight: "8px" }}
                     icon={<ShoppingCartOutlined />}
                   />
                 </Tooltip>
 
                 <Tooltip title="FAVORİ EKLE">
                   <Button
-                    style={{ width: "73px", marginRight: "10px" }}
+                    style={{ width: "73px", marginRight: "9px" }}
                     icon={<HeartOutlined />}
                   />
                 </Tooltip>
 
                 <Tooltip title="PAYLAŞ">
                   <Button
-                    style={{ width: "73px", marginRight: "10px" }}
+                    style={{ width: "73px", marginRight: "9px" }}
                     icon={<ShareAltOutlined />}
                   />
                 </Tooltip>
