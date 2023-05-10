@@ -10,8 +10,10 @@
 }
 
 .listDiv {
-  margin: 40px;
-  border: solid 5px black;
+  margin: 40px 200px ;
+margin-top: 100px;
+  width: 1503px;
+  height: 1503px;  border: solid 0px black;
 }
 
 .carouseDiv {
@@ -26,13 +28,8 @@
   border-radius: 10px;
   height: 60px;
   width: 800px;
+  margin-left: 200px;
 }
-
-.NavLink {
-  color: rgb(0, 0, 0);
-  background-color: rgb(0, 0, 0);
-}
-
 .AntMenu .siderMenu {
   background-color: #000000;
   color: #ffffff;
@@ -42,6 +39,12 @@
   transition: all 1s;
   background-color: #e41f1f;
 }
+
+.NavLink {
+  color: rgb(0, 0, 0);
+  background-color: rgb(0, 0, 0);
+}
+
 
 .headerDiv {
   display: flex;
@@ -58,4 +61,40 @@
 
 .card {
   border: outset 2px rgb(170, 167, 167);
+}
+
+
+
+
+
+
+
+
+
+
+
+/* contact css'ler */
+.map{
+  width: 600px;
+  height: 450px; 
+}
+
+.seppettekiUrun{
+  border: outset 2px rgb(170, 167, 167);
+  height: 100px;
+  width: 1500px;
+  display: flex;
+  margin-left: 20px;
+  
+
+}
+
+/* .seppettekiUrun p {
+  margin: 30px;
+} */
+.sepettekiTutar{
+  border: outset 2px rgb(170, 167, 167);
+  height: 250px;
+  width: 250px;
+  margin-left: 50px;
 }
