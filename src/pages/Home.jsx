@@ -32,7 +32,7 @@ function Home({ change ,sepet}) {
     const newDeger = deger.filter((e, i) => i === index);
 
     setSepet([...sepett, ...newDeger]);
-
+console.log(sepett);
   };
 
 
